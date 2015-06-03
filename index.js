@@ -10,19 +10,19 @@ var normalizeOptions    = require('es5-ext/object/normalize-options')
 
   , defineProperty = Object.defineProperty, defineProperties = Object.defineProperties;
 
-var HtmlTemplateSiteTree = defineProperties(setPrototypeOf(function (document, inserts) {
-	if (!(this instanceof HtmlTemplateSiteTree)) return new HtmlTemplateSiteTree(document, inserts);
+var HtmlSiteTree = defineProperties(setPrototypeOf(function (document, inserts) {
+	if (!(this instanceof HtmlSiteTree)) return new HtmlSiteTree(document, inserts);
 	SiteTree.call(this, document);
 	defineProperty(this, 'inserts', d(ensureObject(inserts)));
 }, SiteTree), {
 	ensureTemplate: d(ensureStringifiable)
 });
 
-HtmlTemplateSiteTree.prototype = Object.create(SiteTree.prototype, {
-	constructor: d(HtmlTemplateSiteTree),
+HtmlSiteTree.prototype = Object.create(SiteTree.prototype, {
+	constructor: d(HtmlSiteTree),
 	resolveTemplate: d(function (tpl, context) {
 		return htmlToDom(this.document, tpl, normalizeOptions(this.inserts, context));
 	})
 });
 
-module.exports = HtmlTemplateSiteTree;
+module.exports = HtmlSiteTree;
