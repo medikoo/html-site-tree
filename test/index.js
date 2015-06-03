@@ -4,7 +4,7 @@ var toArray = require('es5-ext/array/to-array');
 
 module.exports = function (T, a) {
 	var tree = new T(document, {})
-	  , header, content, foo, bar, context = {}, partialContent = {}, conf;
+	  , header, content, foo, bar, context = {}, partialContent = {};
 
 	var rootPage = {
 		_name: 'root',
