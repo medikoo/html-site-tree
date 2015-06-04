@@ -19,7 +19,7 @@
     "d": "^0.1.1",
     "es5-ext": "^0.10.7",
     "html-template-to-dom": "git://github.com/medikoo/html-template-to-dom#f15437421a",
-    "site-tree": "git://github.com/medikoo/site-tree.git#368e07e956c"
+    "site-tree": "git://github.com/medikoo/site-tree.git#cd8635d"
   },
   "devDependencies": {
     "class-list": "^0.1.1",
