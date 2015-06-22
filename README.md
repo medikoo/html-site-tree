@@ -83,16 +83,16 @@ siteTree.load(homepageView)
 
 ### API
 
-#### new HtmlSiteTree(do)
+#### new HtmlSiteTree(document, inserts)
 
 ```javascript
 var HtmlSiteTree = require('html-site-tree');
 var siteTree = new HtmlSiteTree(document, {
-	... // eventual inserts map
+	... // inserts map
 });
 ```
 
-On initialization _HTMLDocument_ instance needs to be provided, and eventual map for ES6 template style inserts used in HTML markup.
+On initialization _HTMLDocument_ instance needs to be provided, and map for inserts used in HTML markup.
 Inserts are resolved with [html-template-to-dom](https://github.com/medikoo/html-template-to-dom#html-template-to-dom) utility, refer to its documentation for more details
 
 #### Templates format
