@@ -20,7 +20,7 @@ var HtmlSiteTree = defineProperties(setPrototypeOf(function (document, inserts) 
 
 HtmlSiteTree.prototype = Object.create(SiteTree.prototype, {
 	constructor: d(HtmlSiteTree),
-	resolveTemplate: d(function (tpl, context) {
+	_resolveTemplate: d(function (tpl, context) {
 		return htmlToDom(this.document, tpl, normalizeOptions(this.inserts, context));
 	})
 });
