@@ -8,12 +8,17 @@ var normalizeOptions    = require('es5-ext/object/normalize-options')
   , htmlToDom           = require('html-template-to-dom')
   , SiteTree            = require('site-tree')
 
-  , defineProperty = Object.defineProperty, defineProperties = Object.defineProperties;
+  , defineProperties = Object.defineProperties;
 
-var HtmlSiteTree = defineProperties(setPrototypeOf(function (document, inserts) {
-	if (!(this instanceof HtmlSiteTree)) return new HtmlSiteTree(document, inserts);
+var HtmlSiteTree = defineProperties(setPrototypeOf(function (document, inserts/*, options*/) {
+	var options;
+	if (!(this instanceof HtmlSiteTree)) return new HtmlSiteTree(document, inserts, arguments[3]);
+	options = Object(arguments[3]);
 	SiteTree.call(this, document);
-	defineProperty(this, 'inserts', d(ensureObject(inserts)));
+	defineProperties(this, {
+		inserts: d(ensureObject(inserts)),
+		reEvaluateScriptsOptions: d(options.reEvaluateScripts)
+	});
 }, SiteTree), {
 	ensureTemplate: d(ensureStringifiable)
 });
@@ -21,7 +26,8 @@ var HtmlSiteTree = defineProperties(setPrototypeOf(function (document, inserts) 
 HtmlSiteTree.prototype = Object.create(SiteTree.prototype, {
 	constructor: d(HtmlSiteTree),
 	_resolveTemplate: d(function (tpl, context) {
-		return htmlToDom(this.document, tpl, normalizeOptions(this.inserts, context));
+		return htmlToDom(this.document, tpl, normalizeOptions(this.inserts, context),
+			{ reEvaluateScripts: this.reEvaluateScriptsOptions });
 	})
 });
 
