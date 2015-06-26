@@ -12,8 +12,8 @@ var normalizeOptions    = require('es5-ext/object/normalize-options')
 
 var HtmlSiteTree = defineProperties(setPrototypeOf(function (document, inserts/*, options*/) {
 	var options;
-	if (!(this instanceof HtmlSiteTree)) return new HtmlSiteTree(document, inserts, arguments[3]);
-	options = Object(arguments[3]);
+	if (!(this instanceof HtmlSiteTree)) return new HtmlSiteTree(document, inserts, arguments[2]);
+	options = Object(arguments[2]);
 	SiteTree.call(this, document);
 	defineProperties(this, {
 		inserts: d(ensureObject(inserts)),
